@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>404｜イラストイメージ</title>
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="favicon.ico" >
+    <link rel="stylesheet" href="/css/ii.css" type="text/css" />
+    <link rel="stylesheet" href="/css/ii_sm.css" type="text/css" />
+	<script type="text/javascript" src="./js/search.js"></script>
+</head>
+
+<body>
+<div id="container">
+<div id="headerArea">
+	<div id="logoBlock">
+		<a title="iiイラストイメージ" href="/"><img alt="無料イラスト素材集「イラストイメージ」" src="/img/system_logo.png" /></a>
+	</div>
+	<div id="menuBlock">
+		<ul>
+			<li><a title="イラスト集" href="/matome/"><img alt="イラスト人気順まとめ" src="/img/btn_matome.png" /></a></li>
+		</ul>
+	</div>
+</div>
+<!-- / headerArea -->
+<div id="menuArea">
+    <div id="menuActionBlock">
+        <div id="searchKeywordBlock" style="display: block;">
+            <form action="/" method="get">
+                <img src="/img/btn_sch_keyword.png" alt="キーワード検索" style="vertical-align:bottom;margin:0 5px 0 0;" />キーワード：<input type="text" name="sch" value="" />
+                <input id="sch_btn" type="submit" value="イラスト検索" name="btnSend" />
+            </form>
+        </div>
+    </div>
+</div>
+<!-- / menuArea -->
+<h1 id="system_description">イラストイメージは無料のかわいい＆かっこいいイラスト素材が2万5千種類以上! 広告などの商用利用も可能です。</h1>
+
+<div id="mainArea">
+    <p style="font-size:2em; font-weight: bold; text-align: center">404 お探しのページが見つかりません。</p>
+    <p style="text-align: center">該当のイラストのページURLが変更された可能性があります。<br />上部のキーワード検索か<a href="/">トップページのメニュー</a>からお探しください。</p>
+    <p style="text-align: center"><a href="/">イラストイメージ トップへ</a></p>
+</div>
+
+<div id="footerAreaBack">
+<div id="footerArea">
+<ul>
+<li><a href="https://illustoon.com">English</a></li>
+<li><a href="/sitemap/">サイトマップ</a></li>
+<li><a href="/help.php" rel="nofollow">ヘルプ・利用規約</a></li>
+<li><a href="https://designalikie.com/contact/" rel="nofollow">お問い合わせ</a></li>
+<li><a href="https://designalikie.com/charatore/">フリー似顔絵</a></li>
+<li class="last"><a href="https://illustlive.com">無料壁紙</a></li>
+</ul>
+<div id="copyrightBlock">
+<p>Copyright DESIGNALIKIE, Limited. All Rights Reserved.</p>
+</div>
+</div>
+<!-- / footeArea -->
+</div>
+<!-- / footeAreaBack -->
+</div>
+<!-- / container -->
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIプログラミング学習コミュニティ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap');
+
+        body {
+            font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #fffaf0; /* フローラルホワイト */
+            color: #555;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        header p {
+            font-size: 1.3rem;
+            margin: 1rem 0 2.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ff69b4; /* ホットピンク */
+            color: #fff;
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            border: 2px solid #fff;
+        }
+        .cta-button:hover {
+            background-color: #ff85c1;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+        section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        section:nth-child(even) {
+            background-color: #fdeff4; /* 薄いピンク */
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #8a2be2; /* ブルーバイオレット */
+            font-weight: 800;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 280px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card h3 {
+            font-size: 1.6rem;
+            color: #ff6347; /* トマト */
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .how-to-join {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        }
+        .steps {
+            text-align: left;
+            display: inline-block;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .steps li {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 40px;
+        }
+        .steps li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #ff69b4;
+            font-size: 1.5rem;
+        }
+        footer {
+            background-color: #4a4e69;
+            color: #f0e6f6;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>AIと共に、未来のコードを学ぶ。</h1>
+            <p>AIプログラミング学習コミュニティへようこそ。<br>初心者から経験者まで、共に学び、成長できる場所です。</p>
+            <a href="#" class="cta-button">今すぐDiscordに参加！</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>このコミュニティでできること</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>仲間と学ぶ</h3>
+                        <p>同じ目標を持つ仲間と情報交換したり、質問し合ったりすることで、学習効率が飛躍的に向上します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>最新情報の共有</h3>
+                        <p>進化の速いAI業界の最新ニュースや論文、便利なツールなどの情報をメンバー同士で共有し合います。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>実践的なプロジェクト</h3>
+                        <p>チームを組んでAIを使ったアプリケーション開発に挑戦。ポートフォリオになる成果物を作成できます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join">
+            <div class="container">
+                <h2>参加はかんたん3ステップ</h2>
+                <div class="how-to-join">
+                    <ol class="steps">
+                        <li>下のボタンをクリックしてDiscordサーバーへ移動</li>
+                        <li>ルールを確認して、簡単な自己紹介を投稿</li>
+                        <li>気になるチャンネルに参加して、交流スタート！</li>
+                    </ol>
+                </div>
+                <p style="margin-top: 2rem;">さあ、あなたもAIプログラミングの世界へ飛び込もう！</p>
+                <a href="#" class="cta-button">Discordに参加して学習を始める</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AIプログラミング学習コミュニティ. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(to bottom right, #2c3e50, #34495e);
+    color: #ecf0f1;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+    margin-bottom: 20px;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    border: 3px solid #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#ui-panel {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.panel h2 {
+    margin-top: 0;
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+}
+
+.panel p, .panel label {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+#game-info p {
+    margin: 10px 0;
+}
+
+#game-info span {
+    font-weight: bold;
+}
+
+#red-score, #red-balls {
+    color: #e74c3c;
+}
+
+#blue-score, #blue-balls {
+    color: #3498db;
+}
+
+#throwing-box-selection label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#status-message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f1c40f;
+    height: 50px;
+}
+
+#how-to-play ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+#how-to-play li {
+    margin-bottom: 15px;
+}
+
+#how-to-play strong {
+    color: #f1c40f;
+}

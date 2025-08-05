@@ -20,7 +20,7 @@ const V_LINE_Y = THROWING_LINE_Y - 3 * METER;
 const DEAD_BALL_LINE_Y = CANVAS_HEIGHT;
 const CROSS_CENTER_X = CANVAS_WIDTH / 2;
 const CROSS_CENTER_Y = 4 * METER;
-const CROSS_LINE_LENGTH = 1 * METER;
+const CROSS_LINE_LENGTH = 0.5 * METER;
 
 const TOTAL_ENDS = 4;
 
@@ -201,8 +201,8 @@ function drawCourt() {
     ctx.stroke();
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("V-Line", 5, V_LINE_Y - 10);
-    ctx.fillText("Throwing Box", 5, THROWING_LINE_Y + 20);
+    // ctx.fillText("V-Line", 5, V_LINE_Y - 10);
+    // ctx.fillText("Throwing Box", 5, THROWING_LINE_Y + 20);
     for (let i = 0; i < 6; i++) {
         ctx.fillText(i + 1, i * THROWING_BOX_WIDTH + 5, THROWING_LINE_Y - 5);
     }

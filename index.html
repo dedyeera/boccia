@@ -2,325 +2,59 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIプログラミング学習コミュニティ</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&family=Orbitron:wght@700&display=swap');
-
-        :root {
-            --bg-color: #0f0f1a;
-            --primary-color: #8A2BE2; /* ブルーバイオレット */
-            --secondary-color: #00BFFF; /* ディープスカイブルー */
-            --text-color: #e0e0e0;
-            --card-bg-color: rgba(22, 22, 37, 0.6);
-            --border-color: rgba(138, 43, 226, 0.3);
-        }
-
-        body {
-            font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        header {
-            background: var(--bg-color);
-            color: #fff;
-            text-align: center;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 800px;
-            height: 800px;
-            background-image: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0) 60%);
-            transform: translateX(-50%);
-            animation: pulse 8s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-            100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-        }
-
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: 700;
-            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        header p {
-            font-size: 1.3rem;
-            margin: 1.5rem 0 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.3s;
-            animation-fill-mode: backwards;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            padding: 18px 40px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5), 0 0 30px rgba(0, 191, 255, 0.4);
-            border: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out 0.6s;
-            animation-fill-mode: backwards;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.6s ease;
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .cta-button:hover {
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.8), 0 0 40px rgba(0, 191, 255, 0.6);
-            transform: translateY(-5px);
-        }
-
-        section {
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 4rem;
-            color: #fff;
-            font-weight: 700;
-            text-shadow: 0 0 8px var(--secondary-color);
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2.5rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            width: 300px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 0 25px var(--border-color);
-        }
-
-        .feature-card h3 {
-            font-size: 1.8rem;
-            color: var(--secondary-color);
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .feature-card p {
-            font-size: 1.1rem;
-        }
-
-        .how-to-join {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--card-bg-color);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .steps {
-            text-align: left;
-            display: inline-block;
-            list-style-type: none;
-            padding-left: 0;
-            counter-reset: step-counter;
-        }
-
-        .steps li {
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-            position: relative;
-            padding-left: 50px;
-        }
-
-        .steps li::before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: -5px;
-            color: var(--bg-color);
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        footer {
-            background-color: #161625;
-            color: #a0a0a0;
-            text-align: center;
-            padding: 3rem;
-            margin-top: 4rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Animation on Scroll */
-        .feature-card, .how-to-join {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Add this script at the end of your body tag */
-        /*
-        <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.feature-card, .how-to-join').forEach(el => {
-            observer.observe(el);
-        });
-        </script>
-        */
-    </style>
+    <title>Boccia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Boccia</h1>
 
-    <header>
-        <div class="container">
-            <img src="images/robot.png" alt="ブリキのロボットのイラスト" style="width: 150px; margin-bottom: 20px;">
-            <h1>AIと共に、未来のコードを学ぶ。</h1>
-            <p>AIプログラミング学習コミュニティへようこそ。<br>初心者から経験者まで、共に学び、成長できる場所です。</p>
-            <a href="#" class="cta-button">今すぐDiscordに参加！</a>
+    <div id="game-container">
+        <div id="main-content">
+            <canvas id="game-canvas"></canvas>
+            <h2 id="status-message"></h2>
         </div>
-    </header>
 
-    <main>
-        <section id="about">
-            <div class="container">
-                <h2>このコミュニティでできること</h2>
-                <div class="features">
-                    <div class="feature-card">
-                        <h3>仲間と学ぶ</h3>
-                        <p>同じ目標を持つ仲間と情報交換したり、質問し合ったりすることで、学習効率が飛躍的に向上します。</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>最新情報の共有</h3>
-                        <p>進化の速いAI業界の最新ニュースや論文、便利なツールなどの情報をメンバー同士で共有し合います。</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>実践的なプロジェクト</h3>
-                        <p>チームを組んでAIを使ったアプリケーション開発に挑戦。ポートフォリオになる成果物を作成できます。</p>
-                    </div>
-                </div>
+        <div id="ui-panel">
+            <div id="game-info" class="panel">
+                <h2>ゲーム情報</h2>
+                <p>現在のプレイヤー: <span id="current-player"></span></p>
+                <p>残りボール: 
+                    <span style="color:#e74c3c">赤</span> <span id="red-balls">6</span> | 
+                    <span style="color:#3498db">青</span> <span id="blue-balls">6</span>
+                </p>
+                <p>スコア: 
+                    <span style="color:#e74c3c">赤</span> <span id="red-score">0</span> | 
+                    <span style="color:#3498db">青</span> <span id="blue-score">0</span>
+                </p>
+                <p>エンド: <span id="current-end">1</span> / <span id="total-ends">4</span></p>
             </div>
-        </section>
 
-        <section id="join">
-            <div class="container">
-                <h2>参加はかんたん3ステップ</h2>
-                <div class="how-to-join">
-                    <ol class="steps">
-                        <li>下のボタンをクリックしてDiscordサーバーへ移動</li>
-                        <li>ルールを確認して、簡単な自己紹介を投稿</li>
-                        <li>気になるチャンネルに参加して、交流スタート！</li>
-                    </ol>
-                </div>
-                <p style="margin-top: 2rem;">さあ、あなたもAIプログラミングの世界へ飛び込もう！</p>
-                <a href="#" class="cta-button">Discordに参加して学習を始める</a>
+            <div id="throwing-box-selection" class="panel">
+                <h2>スローイングボックス</h2>
+                <label><input type="radio" name="throwing-box" value="1" checked> 1</label>
+                <label><input type="radio" name="throwing-box" value="2"> 2</label>
+                <label><input type="radio" name="throwing-box" value="3"> 3</label>
+                <label><input type="radio" name="throwing-box" value="4"> 4</label>
+                <label><input type="radio" name="throwing-box" value="5"> 5</label>
+                <label><input type="radio" name="throwing-box" value="6"> 6</label>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 AIプログラミング学習コミュニティ. All rights reserved.</p>
+            <div id="how-to-play" class="panel">
+                <h2>遊び方</h2>
+                <ul>
+                    <li><strong>目的:</strong> 白いジャックボールに、自分の色のボールをより近づけることを目指します。</li>
+                    <li><strong>投球:</strong> 
+                        <ol>
+                            <li>投げたいスローイングボックスを選択します。</li>
+                            <li>ボックス内でマウスを<strong>クリックしたまま</strong>後ろにドラッグします。</li>
+                            <li>離すとボールが発射されます。ドラッグした距離がパワーになります。</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
         </div>
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
+    </div>
 
-        document.querySelectorAll('.feature-card, .how-to-join').forEach(el => {
-            observer.observe(el);
-        });
-        </script>
-    </footer>
-
+    <script src="game.js"></script>
 </body>
 </html>

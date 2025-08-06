@@ -10,7 +10,7 @@ canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 
 const BALL_RADIUS = 15;
-const JACK_BALL_RADIUS = 10;
+const JACK_BALL_RADIUS = 15;
 const FRICTION = 0.98;
 
 const THROWING_BOX_DEPTH = 2.5 * METER;
@@ -190,14 +190,12 @@ function drawCourt() {
     ctx.beginPath();
     ctx.moveTo(0, V_LINE_Y);
     ctx.lineTo(CANVAS_WIDTH, V_LINE_Y);
-    ctx.strokeStyle = 'red';
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(CROSS_CENTER_X - CROSS_LINE_LENGTH / 2, CROSS_CENTER_Y);
     ctx.lineTo(CROSS_CENTER_X + CROSS_LINE_LENGTH / 2, CROSS_CENTER_Y);
     ctx.moveTo(CROSS_CENTER_X, CROSS_CENTER_Y - CROSS_LINE_LENGTH / 2);
     ctx.lineTo(CROSS_CENTER_X, CROSS_CENTER_Y + CROSS_LINE_LENGTH / 2);
-    ctx.strokeStyle = 'blue';
     ctx.stroke();
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";

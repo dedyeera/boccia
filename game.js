@@ -266,8 +266,6 @@ function handleThrowStart(x, y) {
     const canvasX = (x - rect.left) * scaleX;
     const canvasY = (y - rect.top) * scaleY;
 
-    console.log('Throw Start:', { x, y, canvasX, canvasY });
-
     const boxXStart = (selectedBox - 1) * THROWING_BOX_WIDTH;
     const boxXEnd = selectedBox * THROWING_BOX_WIDTH;
 
@@ -296,10 +294,7 @@ function handleThrowEnd(x, y) {
     const angle = Math.atan2(dy, dx);
     const power = Math.min(Math.sqrt(dx * dx + dy * dy) / 10, 30);
 
-    console.log('Throw End:', { throwEndX, throwEndY, dx, dy, power });
-
     if (power < 1) {
-        console.log('Power too low, ignoring throw.');
         return; // 小さすぎる動きは無視
     }
     if (gameState === 'WAITING_FOR_JACK_BALL') {

@@ -255,40 +255,50 @@ function updateStatusMessage() {
     statusMessageElement.textContent = message;
 }
 
-// --- マウスイベント ---
-canvas.addEventListener('mousedown', e => {
+// --- イベントリスナー ---
+function handleThrowStart(x, y) {
     if (gameState !== 'WAITING_FOR_THROW' && gameState !== 'WAITING_FOR_JACK_BALL') return;
     if (isThrowing) return;
+
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const canvasX = (x - rect.left) * scaleX;
+    const canvasY = (y - rect.top) * scaleY;
+
     const boxXStart = (selectedBox - 1) * THROWING_BOX_WIDTH;
     const boxXEnd = selectedBox * THROWING_BOX_WIDTH;
-    if (x < boxXStart || x > boxXEnd || y < THROWING_LINE_Y) {
-        alert(`ボックス${selectedBox}の中から投球してください。`);
+
+    if (canvasX < boxXStart || canvasX > boxXEnd || canvasY < THROWING_LINE_Y) {
+        // alert(`ボックス${selectedBox}の中から投球してください。`);
         return;
     }
-    throwStartX = x;
-    throwStartY = y;
-    isThrowing = true;
-});
 
-canvas.addEventListener('mouseup', e => {
+    throwStartX = canvasX;
+    throwStartY = canvasY;
+    isThrowing = true;
+}
+
+function handleThrowEnd(x, y) {
     if (!isThrowing) return;
     isThrowing = false;
+
     const rect = canvas.getBoundingClientRect();
-    const throwEndX = e.clientX - rect.left;
-    const throwEndY = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const throwEndX = (x - rect.left) * scaleX;
+    const throwEndY = (y - rect.top) * scaleY;
+
     const dx = throwEndX - throwStartX;
     const dy = throwEndY - throwStartY;
     const angle = Math.atan2(dy, dx);
     const power = Math.min(Math.sqrt(dx * dx + dy * dy) / 10, 30);
 
+    if (power < 1) return; // 小さすぎる動きは無視
+
+    let newBall;
     if (gameState === 'WAITING_FOR_JACK_BALL') {
-        const jackBall = new Ball(throwStartX, throwStartY, JACK_BALL_RADIUS, 'white');
-        jackBall.vx = Math.cos(angle) * power;
-        jackBall.vy = Math.sin(angle) * power;
-        balls.push(jackBall);
+        newBall = new Ball(throwStartX, throwStartY, JACK_BALL_RADIUS, 'white');
         gameState = 'JACK_BALL_MOVING';
     } else if (gameState === 'WAITING_FOR_THROW') {
         if (currentPlayer === 'red' && redBallsLeft > 0) {
@@ -298,16 +308,50 @@ canvas.addEventListener('mouseup', e => {
         } else {
             return;
         }
-        const newBall = new Ball(throwStartX, throwStartY, BALL_RADIUS, currentPlayer);
+        newBall = new Ball(throwStartX, throwStartY, BALL_RADIUS, currentPlayer);
+        gameState = 'COLOR_BALL_MOVING';
+    }
+
+    if (newBall) {
         newBall.vx = Math.cos(angle) * power;
         newBall.vy = Math.sin(angle) * power;
         balls.push(newBall);
-        gameState = 'COLOR_BALL_MOVING';
     }
     
     updateGameInfo();
     updateStatusMessage();
+}
+
+
+// --- マウスイベント ---
+canvas.addEventListener('mousedown', e => {
+    e.preventDefault();
+    handleThrowStart(e.clientX, e.clientY);
 });
+
+canvas.addEventListener('mouseup', e => {
+    e.preventDefault();
+    handleThrowEnd(e.clientX, e.clientY);
+});
+
+// --- タッチイベント ---
+canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    if (e.touches.length > 0) {
+        handleThrowStart(e.touches[0].clientX, e.touches[0].clientY);
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchend', e => {
+    e.preventDefault();
+    if (e.changedTouches.length > 0) {
+        handleThrowEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+}, { passive: false });
 
 // --- ゲームロジック ---
 function getJackBall() {

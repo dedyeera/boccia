@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 横スクロールを禁止 */
+}
+
 body {
     font-family: 'Noto Sans JP', sans-serif;
     background: linear-gradient(to bottom right, #2c3e50, #34495e);
     color: #ecf0f1;
     text-align: center;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px 0;
 }
 
 h1 {
@@ -20,10 +23,15 @@ h1 {
 }
 
 #game-container {
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 10px; /* 左右に少し余白 */
+    box-sizing: border-box; /* paddingを幅の計算に含める */
+    width: 100%;
+    max-width: 620px; /* canvasの幅(600px)より少し大きく */
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    gap: 20px;
 }
 
 #main-content {
@@ -31,20 +39,20 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 600px; /* Canvasの最大幅に合わせる */
 }
 
 canvas {
     border: 3px solid #ecf0f1;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    /* 画面幅に合わせて伸縮するように変更 */
     width: 100%;
     height: auto;
+    box-sizing: border-box;
 }
 
 #ui-panel {
     width: 300px;
+    flex-shrink: 0; /* UIパネルが縮まないようにする */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -110,4 +118,20 @@ canvas {
 
 #how-to-play strong {
     color: #f1c40f;
+}
+
+
+@media (max-width: 1000px) {
+    body {
+        padding: 10px 0;
+    }
+    #game-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #ui-panel {
+        width: 100%;
+    }
 }

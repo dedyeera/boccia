@@ -30,12 +30,17 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 600px; /* Canvasの最大幅に合わせる */
 }
 
 canvas {
     border: 3px solid #ecf0f1;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* 画面幅に合わせて伸縮するように変更 */
+    width: 100%;
+    height: auto;
 }
 
 #ui-panel {

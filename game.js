@@ -229,6 +229,36 @@ function updateGameInfo() {
     document.getElementById('blue-score').textContent = blueScore;
     document.getElementById('current-end').textContent = currentEnd;
     document.getElementById('total-ends').textContent = TOTAL_ENDS;
+    updateThrowingBoxAvailability();
+}
+
+function updateThrowingBoxAvailability() {
+    const isFirstPlayer = (currentPlayer === endStarter);
+    const boxes = document.querySelectorAll('input[name="throwing-box"]');
+
+    boxes.forEach(box => {
+        const boxValue = parseInt(box.value);
+        if (isFirstPlayer) {
+            // 先攻は1, 2, 3
+            box.disabled = (boxValue > 3);
+        } else {
+            // 後攻は4, 5, 6
+            box.disabled = (boxValue < 4);
+        }
+    });
+
+    // If the currently selected box is now disabled, switch to a valid one.
+    const selectedRadio = document.querySelector('input[name="throwing-box"]:checked');
+    if (selectedRadio && selectedRadio.disabled) {
+        const newRadio = isFirstPlayer
+            ? document.querySelector('input[name="throwing-box"][value="1"]')
+            : document.querySelector('input[name="throwing-box"][value="4"]');
+        if (newRadio) {
+            newRadio.checked = true;
+            // The 'change' event listener in init() will update the selectedBox variable
+            newRadio.dispatchEvent(new Event('change'));
+        }
+    }
 }
 
 function updateStatusMessage() {
